@@ -1,0 +1,16 @@
+[Unit]
+Description=BuildH5Package manage Service
+After=network.target syslog.target
+Wants=network.target
+
+[Service]
+Environment="PYTHONUNBUFFERED=1"
+EnvironmentFile=/etc/environment
+#Type=forking
+Type=simple
+ExecStart=/usr/bin/python3 main.py
+Restart=always
+RestartSec=3s
+
+[Install]
+WantedBy=multi-user.target
